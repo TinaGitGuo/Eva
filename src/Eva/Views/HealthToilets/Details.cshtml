@@ -1,0 +1,54 @@
+@model EVA.Models.HealthToilet
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HealthToilet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FemaleWaterCloset)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FemaleWaterCloset)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Handbasins)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Handbasins)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LoadingFactor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LoadingFactor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MaleUrinals)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaleUrinals)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MaleWaterCloset)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaleWaterCloset)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowersPerPatron)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ShowersPerPatron)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.HealthToiletID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

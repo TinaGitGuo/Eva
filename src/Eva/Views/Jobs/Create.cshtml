@@ -1,0 +1,125 @@
+@model EVA.Models.Job
+
+@{
+    ViewData["Title"] = "Add Job";
+}
+
+<h2>Add Job</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+                <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        
+        <div class="form-group">
+            <label asp-for="OrderNumber" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="OrderNumber" class="form-control" />
+                <span asp-validation-for="OrderNumber" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="SiteID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="SiteID" class="form-control" asp-items="ViewBag.SiteID" id="site-target">
+                    <option>---Select Site First---</option>
+                </select>
+            </div>
+        </div>
+        
+
+        <div class="form-group">
+            <label asp-for="WaterBodyID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="WaterBodyID" class="form-control" asp-items="ViewBag.WaterBodyID" id="wb-target">
+                    <option>---Select Site First---</option>
+                </select>
+            </div>
+        </div>
+
+        
+
+        <div class="form-group">
+            <label asp-for="DepartmentID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="DepartmentID" class="form-control" asp-items="ViewBag.DepartmentID">
+                    <option>---Select Department---</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="JobNumber" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="JobNumber" class="form-control" value="1234" />
+                <span asp-validation-for="JobNumber" class="text-danger" />
+            </div>
+        </div>
+
+        
+        <div class="form-group">    
+            <label asp-for="JobDescription" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="JobDescription" class="form-control" />
+                <span asp-validation-for="JobDescription" class="text-danger" />
+            </div>
+        </div>
+
+        
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+
+   
+
+   <script>
+    $(document).ready(function () {
+        $("#site-target").on("change", function () {
+            alert("Inside")
+            $list = $("#wb-target");
+            alert("aferlist")
+            $.ajax({
+                alert: ("Ajax"),
+                url: "/GetWaterBody",//Core0309 is my controller name
+                alert: ("url"),
+                type: "GET",
+                alert: ("type"),
+                data: { id: $("#site-target").val() }, //id of the site which is used to extract waterbodies
+                traditional: true,
+                alert: ("traditional"),
+                success: function (result) {
+                    alert("Here")
+                    $list.empty();
+                    $.each(result, function (i, item) {
+                        $list.append('<option value="' + item["WaterBodyID"] + '"> ' + item["WBName"] + ' </option>');
+   //Must be lowercase ,if not ,you will get value 'Undefined'
+                    });
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.status); 
+                    alert(textStatus);
+                },
+
+                //error: function () {
+                   // alert("Danger!! Will Robertson Danger!!!!!!!!!!!");
+               // }
+            });
+        });
+    });
+</script>
+<!--<script src="~/js/WaterBody.js"></script>-->
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,97 @@
+@model EVA.Models.WaterBody
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit Water Body</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="WaterBodyID" />
+
+        <div class="form-group">
+            <label asp-for="SiteID" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="SiteID" class="form-control" asp-items="ViewBag.SiteID">
+                                    </select>
+                <span asp-validation-for="SiteID" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="WBName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="WBName" class="form-control" />
+                <span asp-validation-for="WBName" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PoolTypeID" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="PoolTypeID" class="form-control" asp-items="ViewBag.PoolTypeID"></select>
+                <span asp-validation-for="PoolTypeID" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="LocationID" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="LocationID" class="form-control" asp-items="ViewBag.LocationID"></select>
+                <span asp-validation-for="LocationID" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ConstructionID" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="ConstructionID" class="form-control" asp-items="ViewBag.ConstructionID"></select>
+                <span asp-validation-for="ConstructionID" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Length" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Length" class="form-control" />
+                <span asp-validation-for="Length" class="text-danger" />
+            </div>
+        </div>
+      
+     
+       
+        <div class="form-group">
+            <label asp-for="Width" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Width" class="form-control" />
+                <span asp-validation-for="Width" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Depth" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Depth" class="form-control" />
+                <span asp-validation-for="Depth" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

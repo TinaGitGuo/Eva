@@ -1,0 +1,47 @@
+@model EVA.Models.ClientContact
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ClientContact</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientContactDetail.ContactType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ClientContactDetail.ContactType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientContactDetail.ContactDetail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ClientContactDetail.ContactDetail)
+        </dd>
+
+
+        <dd>
+
+            
+                            <a asp-controller="ClientContactDetails"
+                               asp-action="Create">Add Another Contact Method</a>
+                    
+        </dd>       
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ClientContactID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

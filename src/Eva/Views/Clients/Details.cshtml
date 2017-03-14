@@ -1,0 +1,131 @@
+@model EVA.Models.Client
+
+
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Client</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShentonAcc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ShentonAcc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Suburb)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Suburb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PostCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountContact)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AccountContact)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AccountEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OfficePhone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OfficePhone)
+        </dd>
+
+
+
+
+        <dd>
+
+            <table class="table">
+                <tr>
+                    <th>
+                        Site
+                    </th>
+                    <th>
+                        Address
+                    </th>
+
+
+                </tr>
+
+
+
+
+                @foreach (var item in Model.Site)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SiteName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SiteAddress) @Html.DisplayFor(modelItem => item.SiteSuburb) @Html.DisplayFor(modelItem => item.SitePostCode)
+
+                        </td>
+
+
+
+                        <td>
+                            <a asp-controller="Sites"
+                               asp-action="Details"
+                               asp-route-id="@item.SiteID">More Details</a>
+                        </td>
+
+                      
+
+                    </tr>
+
+
+                               
+                            } 
+
+            </table>
+            
+
+</dd>
+
+                        
+                
+               
+                
+            </dl>
+            <div>
+                <a asp-action="Edit" asp-route-id="@Model.ClientID">Edit</a> |
+                <a asp-action="Index">Back to List</a>
+            </div>

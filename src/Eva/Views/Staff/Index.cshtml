@@ -1,0 +1,47 @@
+@model IEnumerable<EVA.Models.Staff>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HireDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TerminationDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HireDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TerminationDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.StaffID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.StaffID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.StaffID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

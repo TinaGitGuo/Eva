@@ -1,0 +1,36 @@
+@model EVA.Models.Staff
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Staff</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HireDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HireDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StaffName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TerminationDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TerminationDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.StaffID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

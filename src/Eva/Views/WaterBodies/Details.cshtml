@@ -1,0 +1,172 @@
+@model EVA.Models.WaterBody
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.Site.SiteName) @Html.DisplayFor(model => model.WBName) Details</h2>
+
+<div>
+        <hr />
+    <dl class="dl-horizontal">
+    
+        <dt>
+            @Html.DisplayNameFor(model => model.PoolType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PoolType.iPoolType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location.iLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Construction)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Construction.iConstruction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Length)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Length) metres
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Width)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Width) metres
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Depth)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Depth) metres
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PoolArea)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PoolArea) square metres
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PoolVolume)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PoolVolume) cubic metres
+        </dd>
+        <dt>
+            Pool Category
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PoolType.CategoryID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PoolType.HealthCategory.CategoryDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PoolType.HealthCategory.CategoryDescription)
+        </dd>
+        <dt>
+           Instant Load
+        </dt>
+        <dd>
+            @(Convert.ToInt16(Model.PoolArea / Model.PoolType.HealthCategory.PeakLoad)) persons
+        </dd>
+
+        <dt>
+            Max Daily Load
+        </dt>
+        <dd>
+            @(Convert.ToInt16(((Model.PoolVolume/ Model.PoolType.HealthCategory.TurnoverTime)*60*24)/Model.PoolType.HealthCategory.DailyLoad)) persons
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PoolType.HealthCategory.TurnoverTime)
+        </dt>
+        <dd>
+            @(Convert.ToDecimal((Model.PoolType.HealthCategory.TurnoverTime)/60)) hours or part thereof
+        </dd>
+        <dt>
+            Min Flow Rate 
+        </dt>
+        <dd>
+            @(Convert.ToInt16((Model.PoolVolume*1000) / Model.PoolType.HealthCategory.TurnoverTime)) lpm or @(Convert.ToInt16(((Model.PoolVolume * 1000) / Model.PoolType.HealthCategory.TurnoverTime)/60)) lps
+        </dd>
+
+        <dt>
+            Sand Min Area
+        </dt>
+        <dd>
+           @(Math.Round((Model.PoolVolume * 1000) / Model.PoolType.HealthCategory.TurnoverTime/ Model.PoolType.HealthCategory.Sand,2)) square metres 
+        </dd>
+        <dt>
+            Cartridge Min Area
+        </dt>
+        <dd>
+            @(Math.Round((Model.PoolVolume * 1000) / Model.PoolType.HealthCategory.TurnoverTime / Model.PoolType.HealthCategory.Cartridge,2)) square metres 
+        </dd>
+        <dt>
+            DE Min Area 
+        </dt>
+        <dd>
+            @(Math.Round(((Model.PoolVolume * 1000) / Model.PoolType.HealthCategory.TurnoverTime / Model.PoolType.HealthCategory.DE),2)) square metres 
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.WaterBodyID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+<dd>
+    <table class="table">
+
+       
+
+
+        <tr>
+            <th>Equipment Type</th>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Recommended</th>
+        </tr>
+        @foreach (var item in Model.Equipment)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Eqtype.EquipmentType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Make.EqMake)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Recommended)
+
+                                        
+
+                    <a asp-controller="Equipments"
+                       asp-action="Details"
+                       asp-route-id="@item.EQDataID">More Details</a>
+                </td>
+            </tr>
+
+        }
+
+        
+
+
+        </table>
+
+    </dd>

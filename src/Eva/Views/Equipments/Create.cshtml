@@ -1,0 +1,154 @@
+@model EVA.Models.Equipment
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Equipment</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        
+        <div class="form-group">
+            <label asp-for="Waterbody.SiteID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="Waterbody.SiteID" class="form-control" asp-items="ViewBag.SiteID" id="site-target">
+                    <option>---Select Site First---</option>
+                </select>
+                <a asp-area="" asp-controller="Sites" asp-action="Create">Add New Site</a>
+            </div>
+        </div>
+
+        
+
+        <div class="form-group">
+            <label asp-for="WaterBodyID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="WaterBodyID" class="form-control" asp-items="ViewBag.WaterBodyID" id="wb-target">
+                    <option>---Select Site First---</option>
+                </select>
+                <a asp-area="" asp-controller="WaterBodies" asp-action="Create">Add New Water Body</a>
+            </div>
+        </div>
+
+        
+
+            <div class="form-group">
+                <label asp-for="EqTypeID" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <select asp-for="EqTypeID" class="form-control" asp-items="ViewBag.EqTypeID">
+                        <option>---Select Equipment Type---</option>
+                    </select>
+                    <a asp-area="" asp-controller="EqTypes" asp-action="Create">Add New Equipment Type</a>
+                </div>
+            </div>
+
+       
+
+            <div class="form-group">
+                <label asp-for="MakeID" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <select asp-for="MakeID" class="form-control" asp-items="ViewBag.MakeID">
+                        <option>---Select Equipment Make---</option>
+                    </select>
+                    <a asp-area="" asp-controller="Makes" asp-action="Create">Add New Make</a>
+                </div>
+            </div>
+
+        
+
+            <div class="form-group">
+                <label asp-for="Model" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Model" class="form-control" />
+                    <span asp-validation-for="Model" class="text-danger" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SerialNumber" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="SerialNumber" class="form-control" />
+                    <span asp-validation-for="SerialNumber" class="text-danger" />
+                </div>
+            </div>
+
+        <div class="form-group">
+
+            <label asp-for="ConditionID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="ConditionID" class="form-control" asp-items="ViewBag.ConditionID">
+                    <option>---Select Closest Condition---</option>
+                </select>
+            </div>
+        </div>
+      
+        <div class="form-group">
+            <label asp-for="EstimateRemainingLife" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="EstimateRemainingLife" class="form-control" />
+                <span asp-validation-for="EstimateRemainingLife" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Recommended" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Recommended" class="form-control" />
+                <span asp-validation-for="Recommended" class="text-danger"></span>
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label asp-for="InstallDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="InstallDate" class="form-control" />
+                <span asp-validation-for="InstallDate" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="LastServiceDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="LastServiceDate" class="form-control" />
+                <span asp-validation-for="LastServiceDate" class="text-danger" />
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label asp-for="Notes" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="ReplacementCost" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ReplacementCost" class="form-control" />
+                <span asp-validation-for="ReplacementCost" class="text-danger" />
+            </div>
+        </div>
+        
+       
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+
+   <script src="~/js/WaterBody.js"></script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

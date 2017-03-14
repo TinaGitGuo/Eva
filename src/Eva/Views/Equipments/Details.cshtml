@@ -1,0 +1,105 @@
+@model EVA.Models.Equipment
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Equipment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Waterbody.WBName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Waterbody.WBName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Eqtype.EquipmentType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Eqtype.EquipmentType)
+        </dd>
+        
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Eqtype.EQFunction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Eqtype.EQFunction)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Make)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Make)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SerialNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SerialNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Condition.EqCondition)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Condition.EqCondition)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EstimateRemainingLife)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EstimateRemainingLife)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Recommended)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Recommended)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InstallDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InstallDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastServiceDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastServiceDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReplacementCost)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReplacementCost)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.EQDataID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

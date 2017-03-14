@@ -1,0 +1,112 @@
+@model PaginatedList<EVA.Models.Site>
+
+@{
+    ViewData["Title"] = "Sites";
+}
+
+<h2>Sites</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by Site Name: <input type="text" name="SearchString" value="@ViewData["currentFilter"]"/>
+            <input type="submit" value="Search" class="btn btn-default" />
+            <a asp-action="Index">Back to list</a>
+        </p>
+    </div>
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+
+            </th>
+            <th>
+                
+                <a asp-action="Index" asp-route-sortOrder="@ViewBag.siteSortParm" asp-route-currentFilter="@ViewData["CurrentFilter"]">Site Name</a>
+            </th>
+
+            <th>
+               
+                <a asp-action="Index" asp-route-sortOrder="@ViewBag.FactSortParm" asp-route-currentFilter="@ViewData["CurrentFilter"]"> Facility</a>
+            </th>
+
+            <th>
+               Address
+            </th>
+           
+            <th>
+                
+                <a asp-action="Index" asp-route-sortOrder="@ViewBag.SubSortParm" asp-route-currentFilter="@ViewData["CurrentFilter"]">Suburb</a>
+            </th>
+
+            <th>
+                Post Code
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                 <a asp-controller="Jobs"
+                   asp-action="Create"
+                   asp-route-id="@item.SiteID">Book Job</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SiteName)
+                
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.SiteType.SType)
+
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.SiteAddress)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.SiteSuburb)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.SitePostCode)
+            </td>
+            
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SiteID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SiteID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SiteID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@{ 
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-page="@(Model.PageIndex-1)"
+   class="btn btn-default @prevDisabled btn">
+    Previous
+</a>
+
+<a asp-action="Index"
+   asp-route-page="@(Model.PageIndex+1)"
+   class="btn btn-default @nextDisabled btn">
+    Next
+</a>

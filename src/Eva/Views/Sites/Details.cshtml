@@ -1,0 +1,197 @@
+@model EVA.Models.Site
+
+@{
+    ViewData["Title"] = "Details";
+
+}
+
+<h2>@Html.DisplayFor(model => model.SiteName) Details</h2>
+
+<div>
+    <h4>Site</h4>
+    <hr />
+
+   
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Client.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteTypeID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteType.SType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteSuburb)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteSuburb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SitePostCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SitePostCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteType.HealthGroup.GroupID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteType.HealthGroup.GroupID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteType.HealthGroup.AccessLimit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteType.HealthGroup.AccessLimit)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteType.HealthGroup.Activity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteType.HealthGroup.Activity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteType.HealthGroup.TechnicalOperator)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteType.HealthGroup.TechnicalOperator)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteType.HealthGroup.PatronSupervision)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteType.HealthGroup.PatronSupervision)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteType.HealthGroup.EmergencyCare)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteType.HealthGroup.EmergencyCare)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteType.HealthGroup.HealthToilet.LoadingFactor)
+        </dt>
+        <dd>
+            
+
+           
+
+            @Html.DisplayFor(model => model.SiteType.HealthGroup.HealthToilet.LoadingFactor)
+           
+
+
+        </dd>
+
+        <dd>
+
+            <table class="table">
+                <tr>
+                    <th>
+                        Water Body Name
+                    </th>
+                    <th>
+                        Area
+                    </th>
+                    <th>
+                        Volume
+                    </th>
+
+
+                </tr>
+
+
+
+
+                @foreach (var item in Model.WaterBodys)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.WBName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PoolArea)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PoolVolume)
+                        </td>
+                        <td>
+                            <a asp-controller="WaterBodies"
+                               asp-action="Details"
+                               asp-route-id="@item.WaterBodyID">More Details</a>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </dd>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>
+                        First Aid Room Requirements
+                    </th>
+                </tr>
+
+
+
+
+                @foreach (var item in Model.SiteType.HealthGroup.HealthGroupToAid)
+            {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HealthFirstAid.FirstAidItem)
+                        </td>
+                    </tr>
+                }
+            </table>
+            <table class="table">
+                <tr>
+                    <th>
+                        First Aid Equipment Requirements
+                    </th>
+                </tr>
+
+
+
+
+                @foreach (var item in Model.SiteType.HealthGroup.HEalthGroupToKit)
+            {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HealthFirstAidKit.AidItem)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SiteID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

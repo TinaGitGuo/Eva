@@ -1,0 +1,65 @@
+@model IEnumerable<EVA.Models.HealthToilet>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FemaleWaterCloset)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Handbasins)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoadingFactor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaleUrinals)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaleWaterCloset)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShowersPerPatron)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FemaleWaterCloset)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Handbasins)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoadingFactor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaleUrinals)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaleWaterCloset)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShowersPerPatron)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.HealthToiletID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.HealthToiletID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.HealthToiletID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

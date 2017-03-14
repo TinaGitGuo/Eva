@@ -1,0 +1,77 @@
+@model IEnumerable<EVA.Models.Equipment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InspectDate)
+            </th>
+            <th>
+                Function
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Make.EqMake)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+          
+            
+            <th>
+               Condition
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.EstimateRemainingLife)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Book" asp-route-id="@item.EQDataID">Book Job</a> 
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InspectDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Eqtype.EquipmentType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Make.EqMake)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            
+           
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Condition.EqCondition)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.EstimateRemainingLife)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EQDataID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.EQDataID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.EQDataID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

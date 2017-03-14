@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7DB14D45-5E78-420F-8062-F7B2916AA14F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B1C22416-2187-41E3-8409-BB07C91D4BCA}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Eva", "src\Eva\Eva.xproj", "{73FA7C95-DA4C-4DE7-B56F-B3C3B755D110}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73FA7C95-DA4C-4DE7-B56F-B3C3B755D110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73FA7C95-DA4C-4DE7-B56F-B3C3B755D110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73FA7C95-DA4C-4DE7-B56F-B3C3B755D110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73FA7C95-DA4C-4DE7-B56F-B3C3B755D110}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{73FA7C95-DA4C-4DE7-B56F-B3C3B755D110} = {7DB14D45-5E78-420F-8062-F7B2916AA14F}
+	EndGlobalSection
+EndGlobal

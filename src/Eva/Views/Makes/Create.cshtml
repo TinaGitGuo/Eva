@@ -1,0 +1,35 @@
+@model EVA.Models.Make
+
+@{
+    ViewData["Title"] = "Add Make";
+}
+
+<h2>Add Make</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>All fields required</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Equipment Make</label>
+            <div class="col-md-10">
+                <input asp-for="EqMake" class="form-control" />
+                <span asp-validation-for="EqMake" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

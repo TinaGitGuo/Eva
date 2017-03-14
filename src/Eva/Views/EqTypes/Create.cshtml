@@ -1,0 +1,45 @@
+@model EVA.Models.EqType
+
+@{
+    ViewData["Title"] = "Add Equipment Type";
+}
+
+<h2>Add Equipment Type</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>All fields are required</h4>
+        <hr />
+        <div class="form-group">
+            <label class="col-md-2 control-label">Equipment Type</label>
+            <div class="col-md-10">
+                <input asp-for="EquipmentType" class="form-control" />
+                <span asp-validation-for="EquipmentType" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Equipment Function</label>
+            <div class="col-md-10">
+                <input asp-for="EQFunction" class="form-control" />
+                <span asp-validation-for="EQFunction" class="text-danger"></span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
